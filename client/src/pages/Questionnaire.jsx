@@ -1,0 +1,125 @@
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import Navbar from "../components/Navbar";
+import Question from "../components/Question";
+import { questions } from "../data";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
+
+const Container = styled.div`
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Wrapper = styled.div`
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+`;
+
+const ButtonContainer = styled.div`
+width: 100%;
+display flex;
+justify-content: center;
+align-items: center;
+`;
+
+const Button = styled.button`
+  height: 50px;
+  cursor: pointer;
+`;
+
+const Title = styled.h1`
+  text-align: center;
+`;
+
+const Summary = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  height: 200px;
+`;
+
+const Subtitle = styled.h2``;
+
+const Box = styled.div`
+  width: 200px;
+  margin: 10px;
+  background: #fff;
+`;
+
+const Text = styled.div`
+  background: #f1f1f1;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const P = styled.p``;
+
+const Questionnaire = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const questionnaireRef = location.pathname.split("/")[2];
+  const [filteredQuestions, setFilteredQuestions] = useState();
+
+  useEffect(() => {
+    questionnaireRef &&
+      setFilteredQuestions(
+        questions.filter(
+          (question) => question.questionnaireRef === questionnaireRef
+        )
+      );
+  }, [questionnaireRef]);
+
+  return (
+    <>
+      <Navbar />
+      <Container>
+        <Wrapper>
+          <Title>{questionnaireRef}</Title>
+          <ButtonContainer>
+            <Button
+              onClick={(e) => {
+                e.preventDefault();
+                navigate(`/response/${questionnaireRef}`);
+              }}
+            >
+              Administer Questionnaire
+            </Button>
+          </ButtonContainer>
+          <Subtitle>Questions</Subtitle>
+          {filteredQuestions &&
+            filteredQuestions.map((question) => (
+              <Question
+                question={question}
+                questionIndex={filteredQuestions.indexOf(question)}
+                key={filteredQuestions.indexOf(question)}
+              />
+            ))}
+          <Summary>
+            <Box>
+              <Subtitle>Question Count</Subtitle>
+              <Text>
+                <P>5</P>
+              </Text>
+            </Box>
+            <Box>
+              <Subtitle>Total Respondents</Subtitle>
+              <Text>
+                <P>23</P>
+              </Text>
+            </Box>
+          </Summary>
+        </Wrapper>
+      </Container>
+    </>
+  );
+};
+
+export default Questionnaire;
