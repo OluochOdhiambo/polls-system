@@ -6,7 +6,7 @@ const RespondentSchema = new mongoose.Schema(
     subCounty: { type: String, required: true },
     ward: { type: String, required: true },
     subLocation: { type: String, required: true },
-    age: { type: Number, required: true },
+    age: { type: String, required: true },
     gender: { type: String, required: true },
     responses: { type: Object, required: true },
   },

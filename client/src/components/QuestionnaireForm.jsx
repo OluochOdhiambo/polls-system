@@ -235,8 +235,7 @@ const QuestionnaireForm = () => {
       ...respondent,
       responses: choices,
     };
-    console.log(finalRespondent);
-    // addRespondent(finalRespondent, dispatch);
+    addRespondent(finalRespondent, dispatch);
   };
 
   return (
