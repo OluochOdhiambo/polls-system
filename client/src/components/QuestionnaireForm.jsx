@@ -249,17 +249,19 @@ const QuestionnaireForm = () => {
             <RespondentDetails>
               <Form method="POST">
                 <label htmlFor="county">County</label>
-                <FormInput
-                  onChange={handleChange}
-                  name="county"
-                  id="county"
-                ></FormInput>
+                <FormOptions name="county" id="county" onChange={handleChange}>
+                  <Option value="">---Select County---</Option>
+                  <Option value="embu">Embu</Option>
+                </FormOptions>
                 <label htmlFor="subCounty">Sub-County</label>
-                <FormInput
-                  onChange={handleChange}
-                  name="subcounty"
+                <FormOptions
+                  name="subCounty"
                   id="subCounty"
-                ></FormInput>
+                  onChange={handleChange}
+                >
+                  <Option value="">---Select SubCounty---</Option>
+                  <Option value="mbeere south">Mbeere South</Option>
+                </FormOptions>
                 <label htmlFor="ward">Ward</label>
                 <FormOptions name="ward" id="ward" onChange={handleChange}>
                   <Option value="">---Select Ward---</Option>
@@ -322,17 +324,18 @@ const QuestionnaireForm = () => {
                       ))}
                 </FormOptions>
                 <label htmlFor="gender">Gender</label>
-                <FormInput
-                  onChange={handleChange}
-                  name="gender"
-                  id="gender"
-                ></FormInput>
+                <FormOptions name="age" id="age" onChange={handleChange}>
+                  <Option value="">---Select Gender---</Option>
+                  <Option value="male">Male</Option>
+                  <Option value="female">Female</Option>
+                </FormOptions>
                 <label htmlFor="age">Age</label>
-                <FormInput
-                  onChange={handleChange}
-                  name="age"
-                  id="age"
-                ></FormInput>
+                <FormOptions name="age" id="age" onChange={handleChange}>
+                  <Option value="">---Select Age range---</Option>
+                  <Option value="below 35">Below 35</Option>
+                  <Option value="mid">35 - 50</Option>
+                  <Option value="above 50">Above 50</Option>
+                </FormOptions>
                 <button
                   style={{ marginTop: "10px", height: "30px", width: "200px" }}
                   onClick={confirm}

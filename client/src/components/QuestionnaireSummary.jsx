@@ -58,6 +58,7 @@ const Button = styled.button`
 
 const QuestionnaireSummary = () => {
   const [questionnaireRefs, setQuestionnaireRefs] = useState([]);
+  const [respondents, setRespondents] = useState([]);
   const navigate = useNavigate();
 
   const getUniqueQuestionnaires = (arr) => {
