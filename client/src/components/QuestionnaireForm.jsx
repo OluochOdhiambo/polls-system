@@ -550,18 +550,20 @@ const QuestionnaireForm = () => {
         </Container>
       </div>
       <NavigateSection>
-        <Scroll>
-          <ScrollBtn>
-            <KeyboardArrowUp onClick={() => handleClick("up")}>
-              Previous
-            </KeyboardArrowUp>
-          </ScrollBtn>
-          <ScrollBtn>
-            <KeyboardArrowDown onClick={() => handleClick("down")}>
-              Next
-            </KeyboardArrowDown>
-          </ScrollBtn>
-        </Scroll>
+        {confirmedRespondent && (
+          <Scroll>
+            <ScrollBtn>
+              <KeyboardArrowUp onClick={() => handleClick("up")}>
+                Previous
+              </KeyboardArrowUp>
+            </ScrollBtn>
+            <ScrollBtn>
+              <KeyboardArrowDown onClick={() => handleClick("down")}>
+                Next
+              </KeyboardArrowDown>
+            </ScrollBtn>
+          </Scroll>
+        )}
       </NavigateSection>
     </>
   );

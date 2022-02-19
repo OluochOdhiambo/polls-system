@@ -123,13 +123,13 @@ const Questionnaire = () => {
             <Box>
               <Subtitle>Question Count</Subtitle>
               <Text>
-                <P>{filteredQuestions.length()}</P>
+                <P>{filteredQuestions.length}</P>
               </Text>
             </Box>
             <Box>
               <Subtitle>Total Respondents</Subtitle>
               <Text>
-                <P>{respondents.length()}</P>
+                <P>{respondents.length}</P>
               </Text>
             </Box>
           </Summary>
