@@ -103,11 +103,13 @@ const QuestionnaireSummary = () => {
             <div key={questionnaireRefs.indexOf(ref)}>
               <QuestionWrapper>
                 <Element>{ref}</Element>
-                <Element>{questions.length()}</Element>
+                <Element>{questions.length}</Element>
                 <Element>
-                  {respondents
-                    .filter((response) => response.questionnaireRef === ref)
-                    .length()}
+                  {
+                    respondents.filter(
+                      (response) => response.questionnaireRef === ref
+                    ).length
+                  }
                 </Element>
                 <ButtonContainer>
                   <Button
