@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Question from "../components/Question";
 import { questions } from "../data";
 import { useLocation, useNavigate } from "react-router-dom";
+import { userRequest } from "../requestMethods";
 
 const Container = styled.div`
   width: 100vw;

@@ -106,10 +106,7 @@ const QuestionnaireSummary = () => {
                 <Element>{questions.length()}</Element>
                 <Element>
                   {respondents
-                    .filter(
-                      (response) =>
-                        response.questionnaireRef === questionnaireRef
-                    )
+                    .filter((response) => response.questionnaireRef === ref)
                     .length()}
                 </Element>
                 <ButtonContainer>
