@@ -67,7 +67,7 @@ const Questionnaire = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const questionnaireRef = location.pathname.split("/")[2];
-  const [filteredQuestions, setFilteredQuestions] = useState();
+  const [filteredQuestions, setFilteredQuestions] = useState([]);
   const [respondents, setRespondents] = useState([]);
 
   useEffect(() => {
