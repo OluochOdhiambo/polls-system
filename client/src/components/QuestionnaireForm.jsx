@@ -271,10 +271,10 @@ const QuestionnaireForm = () => {
                   <Option value="makima">Makima</Option>
                   <Option value="mwea">Mwea</Option>
                 </FormOptions>
-                <label htmlFor="sublocation">Sub-location</label>
+                <label htmlFor="subLocation">Sub-location</label>
                 <FormOptions
-                  name="sublocation"
-                  id="sublocation"
+                  name="subLocation"
+                  id="subLocation"
                   onChange={handleChange}
                 >
                   <Option value="">---Select Sublocation---</Option>
@@ -324,7 +324,7 @@ const QuestionnaireForm = () => {
                       ))}
                 </FormOptions>
                 <label htmlFor="gender">Gender</label>
-                <FormOptions name="age" id="age" onChange={handleChange}>
+                <FormOptions name="gender" id="gender" onChange={handleChange}>
                   <Option value="">---Select Gender---</Option>
                   <Option value="male">Male</Option>
                   <Option value="female">Female</Option>
