@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Question from "../components/Question";
 import { questions } from "../data";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   width: 100vw;
@@ -67,6 +67,7 @@ const Questionnaire = () => {
   const navigate = useNavigate();
   const questionnaireRef = location.pathname.split("/")[2];
   const [filteredQuestions, setFilteredQuestions] = useState();
+  const [respondents, setRespondents] = useState([]);
 
   useEffect(() => {
     questionnaireRef &&
@@ -76,6 +77,21 @@ const Questionnaire = () => {
         )
       );
   }, [questionnaireRef]);
+
+  const getRespondents = async () => {
+    try {
+      const res = await userRequest.get(
+        `/respondents?questionnaireRef=${questionnaireRef}`
+      );
+      setRespondents(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getRespondents();
+  }, []);
 
   return (
     <>
@@ -106,13 +122,13 @@ const Questionnaire = () => {
             <Box>
               <Subtitle>Question Count</Subtitle>
               <Text>
-                <P>5</P>
+                <P>{filteredQuestions.length()}</P>
               </Text>
             </Box>
             <Box>
               <Subtitle>Total Respondents</Subtitle>
               <Text>
-                <P>23</P>
+                <P>{respondents.length()}</P>
               </Text>
             </Box>
           </Summary>

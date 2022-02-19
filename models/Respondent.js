@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const RespondentSchema = new mongoose.Schema(
   {
+    questionnaireRef: { type: String, required: true },
     county: { type: String, required: true },
     subCounty: { type: String, required: true },
     ward: { type: String, required: true },

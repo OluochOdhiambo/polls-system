@@ -234,6 +234,7 @@ const QuestionnaireForm = () => {
     const finalRespondent = {
       ...respondent,
       responses: choices,
+      questionnaireRef: questionnaireRef,
     };
     addRespondent(finalRespondent, dispatch);
   };

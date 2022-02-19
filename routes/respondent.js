@@ -26,17 +26,42 @@ router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
 });
 
 //  GET ALL RESPONDENTS
-router.get("/", verifyTokenAndAdmin, async (req, res) => {
-  if (req.query.questionnaireRef) {
-    await Respondent.find({
-      questionnaireRef: req.query.questionnaireRef,
-    })
-      .then((resp) => res.status(200).json(resp))
-      .catch((err) => res.status(500).json(err));
-  } else {
-    await Respondent.find()
-      .then((resp) => res.status(200).json(resp))
-      .catch((err) => res.status(500).json(err));
+// router.get("/", verifyTokenAndAdmin, async (req, res) => {
+//   if (req.query.questionnaireRef) {
+//     await Respondent.find({
+//       questionnaireRef: req.query.questionnaireRef,
+//     })
+//       .then((resp) => res.status(200).json(resp))
+//       .catch((err) => res.status(500).json(err));
+//   } else {
+//     await Respondent.find()
+//       .then((resp) => res.status(200).json(resp))
+//       .catch((err) => res.status(500).json(err));
+//   }
+// });
+
+//GET ALL RESPONDENTS
+router.get("/", async (req, res) => {
+  const qNew = req.query.new;
+  const qRef = req.query.questionnaireRef;
+  try {
+    let respondents;
+
+    if (qNew) {
+      respondents = await Respondent.find().sort({ createdAt: -1 }).limit(1);
+    } else if (qRef) {
+      respondents = await Respondent.find({
+        questionnaireRef: {
+          $in: [qRef],
+        },
+      });
+    } else {
+      respondents = await Respondent.find();
+    }
+
+    res.status(200).json(respondents);
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { questions } from "../data";
 import { mobile } from "../responsive";
 import { useNavigate } from "react-router-dom";
+import { userRequest } from "../requestMethods";
 
 const Container = styled.div`
   width: 100vw;
@@ -70,8 +71,18 @@ const QuestionnaireSummary = () => {
     setQuestionnaireRefs(refsArray);
   };
 
+  const getRespondents = async () => {
+    try {
+      const res = await userRequest.get("/respondents");
+      setRespondents(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     getUniqueQuestionnaires(questions);
+    getRespondents();
   }, []);
 
   return (
@@ -92,8 +103,15 @@ const QuestionnaireSummary = () => {
             <div key={questionnaireRefs.indexOf(ref)}>
               <QuestionWrapper>
                 <Element>{ref}</Element>
-                <Element>5</Element>
-                <Element>23</Element>
+                <Element>{questions.length()}</Element>
+                <Element>
+                  {respondents
+                    .filter(
+                      (response) =>
+                        response.questionnaireRef === questionnaireRef
+                    )
+                    .length()}
+                </Element>
                 <ButtonContainer>
                   <Button
                     onClick={(e) => {

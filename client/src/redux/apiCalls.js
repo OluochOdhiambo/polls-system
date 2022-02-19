@@ -39,7 +39,7 @@ export const addRespondent = async (respondent, dispatch) => {
   try {
     const res = await userRequest.post(`/respondents`, respondent);
     dispatch(addRespondentSuccess(res.data));
-    window.alert(`${respondent._id} added successfully`);
+    window.alert(`Response added successfully`);
   } catch (err) {
     dispatch(addRespondentFailure());
     console.log(err);
