@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Container = styled.div`
+  position: fixed;
+  z-index: 10;
   height: 60px;
   background-color: #fff;
   width: 100vw;

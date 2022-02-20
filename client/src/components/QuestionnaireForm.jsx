@@ -432,6 +432,12 @@ const QuestionnaireForm = () => {
                                   {response}
                                 </Option>
                               ))
+                            ) : typeof question.responses[0] === "object" &&
+                              respondent.ward !== "mavuria" &&
+                              respondent.ward !== "kiambeere" ? (
+                              <Option value="not applicable">
+                                Not Applicable
+                              </Option>
                             ) : (
                               <></>
                             )}

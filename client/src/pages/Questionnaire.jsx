@@ -14,6 +14,7 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
+  padding-top: 60px;
   width: 95%;
   display: flex;
   flex-direction: column;
