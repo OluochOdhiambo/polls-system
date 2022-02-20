@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 const BackgroundImage = styled.div`
   position: fixed;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   opacity: 0.6;
   z-index: -2;
@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <>
       <Navbar></Navbar>
-      <div style={{ position: "absolute", width: "100vw", paddingTop: "60px" }}>
+      <div style={{ position: "absolute", paddingTop: "60px" }}>
         <BackgroundImage></BackgroundImage>
         <Intro></Intro>
         <QuestionnaireSummary></QuestionnaireSummary>
