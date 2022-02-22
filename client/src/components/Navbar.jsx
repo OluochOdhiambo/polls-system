@@ -86,8 +86,11 @@ const Navbar = () => {
             </LinkItem>
           ) : (
             <LinkItem>
-              <Link
-                to="/login"
+              <Button
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/login");
+                }}
                 style={{
                   textDecoration: "none",
                   fontWeight: 500,
@@ -95,7 +98,7 @@ const Navbar = () => {
                 }}
               >
                 Login
-              </Link>
+              </Button>
             </LinkItem>
           )}
         </Right>
