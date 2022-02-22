@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { signOut } from "../redux/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
 
