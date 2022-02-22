@@ -40,7 +40,7 @@ function App() {
         <Route
           exact
           path="/results/:questionnaire"
-          element={user?.permissions === "admin" ? <Results /> : <ErrorPage />}
+          element={user?.permission === "admin" ? <Results /> : <ErrorPage />}
         ></Route>
       </Routes>
     </Router>
