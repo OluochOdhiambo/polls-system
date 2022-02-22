@@ -8,6 +8,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Respondent from "./pages/Respondent";
 import Questionnaire from "./pages/Questionnaire";
+import Results from "./pages/Results";
+import ErrorPage from "./components/ErrorPage";
 import { useSelector } from "react-redux";
 
 function App() {
@@ -34,6 +36,11 @@ function App() {
           exact
           path="/questionnaires/:questionnaire"
           element={user ? <Questionnaire /> : <Navigate replace to="/login" />}
+        ></Route>
+        <Route
+          exact
+          path="/results/:questionnaire"
+          element={user.permissions === "admin" ? <Results /> : <ErrorPage />}
         ></Route>
       </Routes>
     </Router>
