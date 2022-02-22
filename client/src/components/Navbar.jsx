@@ -92,7 +92,6 @@ const Navbar = () => {
                   navigate("/login");
                 }}
                 style={{
-                  textDecoration: "none",
                   fontWeight: 500,
                   color: "#111",
                 }}
