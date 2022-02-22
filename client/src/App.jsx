@@ -19,7 +19,7 @@ function App() {
         <Route
           exact
           path="/"
-          element={user ? <Respondent /> : <Navigate replace to="/login" />}
+          element={user ? <Home /> : <Navigate replace to="/login" />}
         ></Route>
         <Route
           path="/login"
