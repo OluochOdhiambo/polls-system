@@ -39,7 +39,7 @@ const verifyTokenAndAuthorized = (req, res, next) => {
     if (
       req.user?.permission === "admin" ||
       req.user?.permission === "sup" ||
-      req.user.id === req.params.id
+      req.user.permission === "enum"
     ) {
       next();
     } else {

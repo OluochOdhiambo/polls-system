@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { signOut } from "../redux/apiCalls";
+import { useDispatch, useSelector } from "react-redux";
 
 const Container = styled.div`
   position: fixed;
@@ -46,8 +48,18 @@ const LinkItem = styled.div`
   ${mobile({ width: "30%" })}
 `;
 
+const Button = styled.button``;
+
 const Navbar = () => {
   const user = useSelector((state) => state.user.currentUser);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    signOut(dispatch);
+  };
+
   return (
     <Container>
       <Wrapper>
@@ -61,8 +73,8 @@ const Navbar = () => {
         <Right>
           {user ? (
             <LinkItem>
-              <Link
-                to="/logout"
+              <Button
+                onClick={handleClick}
                 style={{
                   textDecoration: "none",
                   fontWeight: 500,
@@ -70,7 +82,7 @@ const Navbar = () => {
                 }}
               >
                 Logout
-              </Link>
+              </Button>
             </LinkItem>
           ) : (
             <LinkItem>

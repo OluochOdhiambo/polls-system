@@ -16,7 +16,11 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<Home />}></Route>
+        <Route
+          exact
+          path="/"
+          element={user ? <Navigate replace to="/" /> : <Home />}
+        ></Route>
         <Route
           path="/login"
           element={user ? <Navigate replace to="/" /> : <Login />}
