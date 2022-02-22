@@ -22,13 +22,13 @@ export const questions = [
     questionType: "radio",
     responses: [
       {
-        mavuria: ["Ngari Mbaka", "Wamawaiyu", "Judy", "Others"],
+        mavuria: ["Ngari Mbaka", "Wamawaiyu", "Judy", "Mavuria Others"],
         kiambeere: [
           "Masters",
           "Chake",
           "Wachira Ikamba Ngoci",
           "Joseph Njue (msaniih)",
-          "Others",
+          "Kiambere Others",
         ],
       },
     ],
