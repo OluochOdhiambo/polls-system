@@ -104,26 +104,20 @@ const Intro = () => {
           <Feature>
             <Description>
               <FeatureComponent>
-                <FeatureTitle>
-                  <Link to="/accounts">Manage User Accounts</Link>
-                </FeatureTitle>
+                <FeatureTitle>Manage User Accounts</FeatureTitle>
                 <InfoText>
                   Create multiple accounts enumerator and supervisor accounts
                   for your research team
                 </InfoText>
               </FeatureComponent>
               <FeatureComponent>
-                <FeatureTitle>
-                  <Link to="/questionnaires">Custom survey</Link>
-                </FeatureTitle>
+                <FeatureTitle>Custom survey</FeatureTitle>
                 <InfoText>
                   Design custom survey forms and questions to suit your research
                 </InfoText>
               </FeatureComponent>
               <FeatureComponent>
-                <FeatureTitle>
-                  <Link to="/reports">Data Analytics</Link>
-                </FeatureTitle>
+                <FeatureTitle>Data Analytics</FeatureTitle>
                 <InfoText>Get quick analysis reports for your surveys</InfoText>
               </FeatureComponent>
             </Description>

@@ -28,7 +28,9 @@ align-items: center;
 `;
 
 const Button = styled.button`
+  margin: 10px;
   height: 50px;
+  width: 120px;
   cursor: pointer;
 `;
 
@@ -109,6 +111,14 @@ const Questionnaire = () => {
               }}
             >
               Administer Questionnaire
+            </Button>
+            <Button
+              onClick={(e) => {
+                e.preventDefault();
+                navigate(`/results/${questionnaireRef}`);
+              }}
+            >
+              View Analysis
             </Button>
           </ButtonContainer>
           <Subtitle>Questions</Subtitle>

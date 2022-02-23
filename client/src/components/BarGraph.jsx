@@ -31,6 +31,12 @@ const Legend = styled.div`
   top: 0px;
   right: 10px;
   position: absolute;
+  padding: 0 10px;
+`;
+
+const LegendTitle = styled.p`
+  text-align: center;
+  font-weight: 600;
 `;
 
 const LegendItem = styled.div`
@@ -41,11 +47,17 @@ const LegendItem = styled.div`
 
 const LegendColor = styled.div`
   width: 10%;
-  margin-right: 20px;
+  margin-right: 10px;
   background: ${(props) => props.color};
 `;
 
-const LegendText = styled.p``;
+const LegendText = styled.p`
+  width: 80%;
+`;
+
+const LegendValue = styled.span`
+  width: 10%;
+`;
 
 const Graph = styled.div`
   padding: 0 10px;
@@ -96,6 +108,7 @@ const BarGraph = (props) => {
   const [counterObject, setCounterObject] = useState({});
   const [questionNames, setQuestionNames] = useState([]);
   const [counterObjectFrequencies, setCounterObjectFrequencies] = useState({});
+
   const colors = [
     "#f37a4e",
     "#ea1162",
@@ -180,10 +193,10 @@ const BarGraph = (props) => {
   }, [counterObject]);
 
   function toPercentages(obj) {
-    let totalVotes = Object.values(obj).reduce((a, b) => a + b);
+    let votes = Object.values(obj).reduce((a, b) => a + b);
 
     Object.keys(obj).forEach((questionName) => {
-      obj[questionName] = (obj[questionName] / totalVotes) * 100;
+      obj[questionName] = (obj[questionName] / votes) * 100;
     });
   }
 
@@ -202,6 +215,7 @@ const BarGraph = (props) => {
       <GraphContainer>
         <Graph>
           <Legend>
+            <LegendTitle>Legend</LegendTitle>
             {Object.keys(counterObject).length !== 0 &&
               typeof props.question.responses[0] !== "object" &&
               props.question.responses.map((response) => (
@@ -210,6 +224,9 @@ const BarGraph = (props) => {
                     color={colors[props.question.responses.indexOf(response)]}
                   ></LegendColor>
                   <LegendText>{response}</LegendText>
+                  <LegendValue>
+                    {Math.round(counterObject[props.question.name][response])}%
+                  </LegendValue>
                 </LegendItem>
               ))}
           </Legend>
@@ -224,13 +241,13 @@ const BarGraph = (props) => {
             ))}
         </Graph>
       </GraphContainer>
-      <Labels>
+      {/* <Labels>
         {props.question.responses.map((response) => (
           <LabelID key={props.question.responses.indexOf(response)}>
             {props.question.responses.indexOf(response) + 1}
           </LabelID>
         ))}
-      </Labels>
+      </Labels> */}
     </Container>
   );
 };
