@@ -41,7 +41,7 @@ router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
 // });
 
 //GET ALL RESPONDENTS
-router.get("/", async (req, res) => {
+router.get("/", verifyTokenAndAuthorized, async (req, res) => {
   const qNew = req.query.new;
   const qRef = req.query.questionnaireRef;
   try {
